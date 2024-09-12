@@ -20,6 +20,7 @@ public class ProductsRepositoryTest {
         p.setName("sonew me");
         p.setPrice(2.34);
         p.setQuantity(10);
+        repository.saveAndFlush(p);
 
         Optional<Product> byId = repository.findById(Long.valueOf(1));
 
