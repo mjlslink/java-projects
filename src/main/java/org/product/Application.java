@@ -12,6 +12,6 @@ public class Application {
         app.addListeners(new ApplicationEnvironmentPreparedListener());
         app.addInitializers(new ApplicationContextNewInitializer());
         app.addListeners(new ApplicationPreparedListener());
-        app.addListeners(new ApplicationReadyListener()vent);
+        app.addListeners(new ApplicationReadyListener());
         app.run(args);    }
 }
