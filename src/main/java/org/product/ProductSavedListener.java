@@ -4,7 +4,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PrductSavedListener {
+public class ProductSavedListener {
 
     @EventListener
     public void handleProductSavedEvent(ProductSavedEvent event) {

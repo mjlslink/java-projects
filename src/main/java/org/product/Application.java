@@ -2,6 +2,7 @@ package org.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationListener;
 
 @SpringBootApplication
 public class Application {
@@ -13,5 +14,6 @@ public class Application {
         app.addInitializers(new ApplicationContextNewInitializer());
         app.addListeners(new ApplicationPreparedListener());
         app.addListeners(new ApplicationReadyListener());
+        app.addListeners((ApplicationListener<?>) new ProductSavedListener());
         app.run(args);    }
 }
