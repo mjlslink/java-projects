@@ -2,6 +2,7 @@
 package org.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +16,12 @@ import java.util.Optional;
 
         private final ProductRepository productRepository;
 
+        private ApplicationEventPublisher eventPublisher;
+
         @Autowired
-        public ProductService(ProductRepository productRepository) {
+        public ProductService(ProductRepository productRepository, ApplicationEventPublisher eventPublisher) {
             this.productRepository = productRepository;
+            this.eventPublisher = eventPublisher;
         }
 
         /**
@@ -27,6 +31,7 @@ import java.util.Optional;
          * @return the persisted entity
          */
         public Product saveProduct(Product product) {
+            eventPublisher.publishEvent(new ProductSavedEvent(product.getId()));
             return productRepository.save(product);
         }
 
